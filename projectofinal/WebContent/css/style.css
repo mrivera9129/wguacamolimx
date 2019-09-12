@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+
+
+
+input, select {
+	border-radius: 3px;
+	border: none;
+	padding: 2px;
+	height: 40px;
+	width: 47%;
+}
+
+button{
+	border: none;
+	border-radius: 3px;
+}
+
+textarea {
+	border-radius: 3px;
+	border: none;
+	padding: 2px;
+	width: 94%;
+}
