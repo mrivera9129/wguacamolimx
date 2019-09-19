@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Guacamoli.mx - Login</title>
+<title>Guacamoli.mx - Usuarios</title>
 <link rel="icon" type="image/png"
 	href="http://icons.iconarchive.com/icons/custom-icon-design/round-world-flags/16/Mexico-icon.png" />
 <!-- Font Awesome Icons -->
@@ -46,12 +46,20 @@
 .img-fluid {
 	height: 305px;
 }
+input{
+	height: 40px;
+}
+
 </style>
-<link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
 
+<%@page import="java.util.ArrayList"%>      <%--Importing all the dependent classes--%>
+<%@page import="modelos.Usuarios"%>
+<%@page import="java.util.Iterator"%> 
+<% ArrayList<Usuarios> listUsers = (ArrayList) request.getAttribute("usuarios"); %> 
 	<!-- Navigation -->
 	<nav
 		class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-scrolled"
@@ -70,47 +78,50 @@
 	</nav>
 
 	<!-- About Section -->
-	<section class="page-section" id="about"
-		style="background: url('https://cdn.pixabay.com/photo/2017/02/15/10/39/food-2068217_960_720.jpg'); background-size: cover;">
+	<section class="page-section" id="about">
 
-		<div class="container" style="padding-top: 40px;">
+		<div class="container" style="padding-top: 100px;">
 
 			<div class="row">
-
-				<div class="col-lg-8" style="padding: 20px;">
-					<form method="post" action="registrar">
-						<h2 class="" style="color: white;">Crear cuenta</h2>
-						<p></p>
-						<p>
-							<input type="text" name="nombre" autofocus required
-								placeholder="Nombre" /> <input type="text" name="apellidos" required
-								placeholder="Apellidos" />
-						</p>
-						<p>
-							<input type="number" name="edad" required placeholder="Edad" /> 
-							<select name="sexo">
-							<option disabled selected>Género</option>
-							<option value="M">Masculino</option>
-							<option value="F">Femenino</option>
-							</select>
-
-						</p>
-						<p>
-							<input type="text" name="ocupacion" required placeholder="Ocupación" />
-							<input type="text" name="email" required placeholder="Email" />
-						</p>
-						<p>
-							<input type="text" name="usuario" autofocus required
-								placeholder="Usuario" /> <input type="password" name="password" required
-								placeholder="Contraseña" />
-						</p>
-						<h5 style="color: white;">Cuéntanos sobre ti:</h5>
-						<textarea style="" rows="4" name="sobre"></textarea>
-						<p>
-							<button class="btn btn-primary" type="submit">Registrarse</button>
-						</p>
-					</form>
+			<div class="col-lg-12 " style="margin-bottom: 10px;">
+				<h3>Lista de usuarios</h3>
+			</div>
+			 <!--
+				<div class="col-lg-4 col-sm-6"></div>
+				 -->
+				<div class="col-lg-12 col-sm-12 bd-example">
+					<table class="table table-striped">
+ 
+<tr><th>Nombre</th><th>Edad</th><th>Sexo</th><th>Ocupación</th><th>Email</th><th>Descripción personal</th></tr>
+<%
+// Iterating through subjectList
+ 
+if(request.getAttribute("usuarios") != null)  // Null check for the object
+{
+ Iterator<Usuarios> iterator = listUsers.iterator();  // 
+ 
+ while(iterator.hasNext())  // 
+ {
+	 Usuarios us = iterator.next(); //
+ %>
+ <tr>
+ <!--  
+ <td><%=us.getId() %></td>
+ -->
+ <td><%=us.getNombre() %> &nbsp; <%=us.getApellidos() %></td>
+ <td><%=us.getEdad() %></td>
+ <td><%=us.getSexo() %></td>
+ <td><%=us.getOcupacion() %></td>
+ <td><%=us.getEmail() %></td>
+ <td><%=us.getSobre()%></td>
+ </tr>
+ <%
+ }
+}
+%>
+</table>
 				</div>
+				<div class="col-lg-4 col-sm-6"></div>
 			</div>
 		</div>
 	</section>

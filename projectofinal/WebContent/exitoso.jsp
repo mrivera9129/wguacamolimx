@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Guacamoli.mx - Login</title>
+<title>Guacamoli.mx - Registro</title>
 <link rel="icon" type="image/png"
 	href="http://icons.iconarchive.com/icons/custom-icon-design/round-world-flags/16/Mexico-icon.png" />
 <!-- Font Awesome Icons -->
@@ -46,8 +46,11 @@
 .img-fluid {
 	height: 305px;
 }
+input{
+	height: 40px;
+}
 </style>
-<link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -70,47 +73,16 @@
 	</nav>
 
 	<!-- About Section -->
-	<section class="page-section" id="about"
-		style="background: url('https://cdn.pixabay.com/photo/2017/02/15/10/39/food-2068217_960_720.jpg'); background-size: cover;">
+	<section class="page-section" id="about">
 
-		<div class="container" style="padding-top: 40px;">
+		<div class="container" style="padding-top: 100px;">
 
 			<div class="row">
-
-				<div class="col-lg-8" style="padding: 20px;">
-					<form method="post" action="registrar">
-						<h2 class="" style="color: white;">Crear cuenta</h2>
-						<p></p>
-						<p>
-							<input type="text" name="nombre" autofocus required
-								placeholder="Nombre" /> <input type="text" name="apellidos" required
-								placeholder="Apellidos" />
-						</p>
-						<p>
-							<input type="number" name="edad" required placeholder="Edad" /> 
-							<select name="sexo">
-							<option disabled selected>Género</option>
-							<option value="M">Masculino</option>
-							<option value="F">Femenino</option>
-							</select>
-
-						</p>
-						<p>
-							<input type="text" name="ocupacion" required placeholder="Ocupación" />
-							<input type="text" name="email" required placeholder="Email" />
-						</p>
-						<p>
-							<input type="text" name="usuario" autofocus required
-								placeholder="Usuario" /> <input type="password" name="password" required
-								placeholder="Contraseña" />
-						</p>
-						<h5 style="color: white;">Cuéntanos sobre ti:</h5>
-						<textarea style="" rows="4" name="sobre"></textarea>
-						<p>
-							<button class="btn btn-primary" type="submit">Registrarse</button>
-						</p>
-					</form>
+				<div class="col-lg-4 col-sm-6"></div>
+				<div class="col-lg-4 col-sm-6" style="border: 2px solid #f46841; padding: 20px;">
+					<p class="text-center"> Su usuario se ha creado con éxito. </p>
 				</div>
+				<div class="col-lg-4 col-sm-6"></div>
 			</div>
 		</div>
 	</section>
