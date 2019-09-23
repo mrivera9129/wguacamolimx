@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Guacamoli.mx - Login</title>
+<title>Guacamoli.mx - Editor</title>
 <link rel="icon" type="image/png"
 	href="http://icons.iconarchive.com/icons/custom-icon-design/round-world-flags/16/Mexico-icon.png" />
 <!-- Font Awesome Icons -->
@@ -30,6 +30,8 @@
 
 <!-- Theme CSS - Includes Bootstrap -->
 <link href="css/creativem.css" rel="stylesheet">
+
+<link rel="stylesheet" href="js/tiny/style.css" />
 <style>
 .page-section {
 	padding: 3rem 0;
@@ -46,15 +48,9 @@
 .img-fluid {
 	height: 305px;
 }
-input{
+
+input {
 	height: 40px;
-}
-
-a{
-	text-decoration: none !important;
-}
-
-body{
 }
 </style>
 
@@ -85,31 +81,24 @@ body{
 		<div class="container" style="padding-top: 100px;">
 
 			<div class="row">
-				<div class="col-lg-4 col-sm-6"></div>
-				<div class="col-lg-4 col-sm-6" style="border: 2px solid #f46841; padding: 20px;">
-					<form method="post" action="session">
-						<h2 class="text-center mt-0">Login</h2>
-						<hr class="divider my-4" style="">
-						<div class="text-center">
-							<p>
-								<input type="text" name="us" autofocus required placeholder="Usuario">
-							</p>
-							<p>
-								<input type="password" name="ps" required placeholder="Contraseña">
-							</p>
-							<p>
-								<button class="btn btn-secondary" type="submit">Entrar</button>
-							</p>
-						</div>
+				<div class="col-lg-8 col-sm-6">
+					<h1>Receta</h1>
+					<form method="post" action="saveReceta">
+						<textarea id="texto" name="texto" style="width: 400px; height: 200px"></textarea>
+						<p>
+							<input type='submit' style='text-align: right' name='enviar' id='enviar' value='Enviar'>
+						</p>
 					</form>
-					<p class="text-center">
-					<!--  
-					<a href="#" >¿Olvido su password? </a> <br> 
-					-->
-					<a href="registro.jsp" >Crear cuenta </a>
-					</p>
 				</div>
-				<div class="col-lg-4 col-sm-6"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-sm-6">
+					<h1>Archivo</h1>
+					<form action="upload" method="post" enctype="multipart/form-data">
+						<input type="text" name="description" /> <input type="file"
+							name="file" /> <input type="submit" />
+					</form>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -131,6 +120,45 @@ body{
 
 	<!-- Custom scripts for this template -->
 	<script src="js/creativem.js"></script>
+
+	<!-- HTML Editor  -->
+
+	<script type="text/javascript" src="js/tiny/tinyeditor.js"></script>
+	<script type="text/javascript">
+	var texto = new TINY.editor.edit('texto', {
+		    id: 'texto',
+			width : 584,
+			height : 175,
+			cssclass : 'te',
+			controlclass : 'tecontrol',
+			rowclass : 'teheader',
+			dividerclass : 'tedivider',
+			controls : [ 'bold', 'italic', 'underline', 'strikethrough', '|',
+					'subscript', 'superscript', '|', 'orderedlist',
+					'unorderedlist', '|', 'outdent', 'indent', '|',
+					'leftalign', 'centeralign', 'rightalign', 'blockjustify',
+					'|', 'unformat', '|', 'undo', 'redo', 'n', 'font', 'size',
+					'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'cut',
+					'copy', 'paste', 'print' ],
+			footer : true,
+			fonts : [ 'Verdana', 'Arial', 'Georgia', 'Trebuchet MS' ],
+			xhtml : true,
+			cssfile : 'js/tiny/style.css',
+			bodyid : 'editor',
+			footerclass : 'tefooter',
+			toggle : {
+				text : 'show source',
+				activetext : 'show wysiwyg',
+				cssclass : 'toggle'
+			},
+			resize : {
+				cssclass : 'resize'
+			}
+		});
+	$('#enviar').click(function() {
+		   texto.post();
+		 });
+	</script>
 
 </body>
 

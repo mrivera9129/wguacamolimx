@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Guacamoli.mx - Login</title>
+<title>Guacamoli.mx - Usuarios</title>
 <link rel="icon" type="image/png"
 	href="http://icons.iconarchive.com/icons/custom-icon-design/round-world-flags/16/Mexico-icon.png" />
 <!-- Font Awesome Icons -->
@@ -49,19 +49,20 @@
 input{
 	height: 40px;
 }
-
-a{
-	text-decoration: none !important;
-}
-
-body{
+#mainNav .navbar-nav .nav-item .nav-link{
+	color: #6c757d !important;
 }
 </style>
 
 </head>
 
 <body id="page-top">
-
+<%@page import="modelos.Usuarios"%>
+<% 
+HttpSession hs = request.getSession(); 
+Usuarios us = (Usuarios) hs.getAttribute("usuario");
+String s = (String) us.getSexo();
+%>
 	<!-- Navigation -->
 	<nav
 		class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-scrolled"
@@ -76,41 +77,41 @@ body{
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+			<% if(hs.getAttribute("session") != null){ %>
+				<ul class="navbar-nav ml-auto my-2 my-lg-0">
+				<li class="nav-item"><a  class="nav-link js-scroll-trigger"
+						href="p-micuenta.jsp">Bienvenid@ ${usuario.nombre} </a> </li>
+					<li class="nav-item"><a  class="nav-link js-scroll-trigger"
+						href="./recetas">Mis recetas</a> </li>
+					<li class="nav-item"><a  class="nav-link js-scroll-trigger"
+						href="./blogs">Mis blogs</a> </li>	
+					<li class="nav-item"><a  class="nav-link js-scroll-trigger"
+						href="./salir">Cerrar Sesión</a> </li>
+				</ul>
+				<% } %>
+			</div>
 		</div>
 	</nav>
 
 	<!-- About Section -->
 	<section class="page-section" id="about">
-
+	
 		<div class="container" style="padding-top: 100px;">
-
+			<% if(hs.getAttribute("session") != null){ %>
 			<div class="row">
-				<div class="col-lg-4 col-sm-6"></div>
-				<div class="col-lg-4 col-sm-6" style="border: 2px solid #f46841; padding: 20px;">
-					<form method="post" action="session">
-						<h2 class="text-center mt-0">Login</h2>
-						<hr class="divider my-4" style="">
-						<div class="text-center">
-							<p>
-								<input type="text" name="us" autofocus required placeholder="Usuario">
-							</p>
-							<p>
-								<input type="password" name="ps" required placeholder="Contraseña">
-							</p>
-							<p>
-								<button class="btn btn-secondary" type="submit">Entrar</button>
-							</p>
-						</div>
-					</form>
-					<p class="text-center">
-					<!--  
-					<a href="#" >¿Olvido su password? </a> <br> 
-					-->
-					<a href="registro.jsp" >Crear cuenta </a>
-					</p>
-				</div>
-				<div class="col-lg-4 col-sm-6"></div>
+			<div class="col-lg-12">
+			<h4 style="color:#f4623a">Mis Recetas </h4>
 			</div>
+			</div>
+			<% } else { %>
+			<div class="row">
+				<div class="col-lg-12 col-sm-6" style="text-align:center;">
+				<h4>¡Necesitas registrarte para entrar aquí! </h4>	<br>
+				<a href="login.jsp" >Login/Registrarse </a>
+				</div>
+			</div>
+			<% } %>
 		</div>
 	</section>
 

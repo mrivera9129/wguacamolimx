@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Guacamoli.mx - Login</title>
+<title>Guacamoli.mx - Error</title>
 <link rel="icon" type="image/png"
 	href="http://icons.iconarchive.com/icons/custom-icon-design/round-world-flags/16/Mexico-icon.png" />
 <!-- Font Awesome Icons -->
@@ -49,13 +49,6 @@
 input{
 	height: 40px;
 }
-
-a{
-	text-decoration: none !important;
-}
-
-body{
-}
 </style>
 
 </head>
@@ -87,26 +80,9 @@ body{
 			<div class="row">
 				<div class="col-lg-4 col-sm-6"></div>
 				<div class="col-lg-4 col-sm-6" style="border: 2px solid #f46841; padding: 20px;">
-					<form method="post" action="session">
-						<h2 class="text-center mt-0">Login</h2>
-						<hr class="divider my-4" style="">
-						<div class="text-center">
-							<p>
-								<input type="text" name="us" autofocus required placeholder="Usuario">
-							</p>
-							<p>
-								<input type="password" name="ps" required placeholder="Contraseña">
-							</p>
-							<p>
-								<button class="btn btn-secondary" type="submit">Entrar</button>
-							</p>
-						</div>
-					</form>
-					<p class="text-center">
-					<!--  
-					<a href="#" >¿Olvido su password? </a> <br> 
-					-->
-					<a href="registro.jsp" >Crear cuenta </a>
+					<p class="text-center"> Error intente nuevamente. 
+					<br>
+				<a href="login.jsp" >Login </a>
 					</p>
 				</div>
 				<div class="col-lg-4 col-sm-6"></div>

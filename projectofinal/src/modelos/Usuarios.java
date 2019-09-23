@@ -157,7 +157,7 @@ public class Usuarios {
 		try{
 			Connection con = null;
 			con = (Connection) ConnectionManager.getConnection();
-			PreparedStatement ps = con.prepareStatement("INSERT INTO usuarios (nombre, apellidos, edad, sexo, ocupacion, email, usuario, password, sobre) VALUES (?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ps = con.prepareStatement("update usuarios set nombre=?, apellidos=?, edad=?, sexo=?, ocupacion=?, email=?, usuario=?, password=?, sobre=? where id=?");
 			ps.setString(1, nombre);
 			ps.setString(2, apellidos);
 			ps.setInt(3, edad);
@@ -167,8 +167,9 @@ public class Usuarios {
 			ps.setString(7, usuario);
 			ps.setString(8, password);
 			ps.setString(9, sobre);
+			ps.setInt(10, id);
 			/* execute query */
-			ps.execute();
+			int status = ps.executeUpdate();
 			/* Close connection */
 			ps.close();
 			con.close();
@@ -200,6 +201,38 @@ public class Usuarios {
 			System.out.println(e.getMessage());
 		}
 		return list;
+	}
+	
+	public boolean validateUser(String user, String pass) {
+		
+		boolean validate = false;
+		Connection con = null;
+		try{
+		con = (Connection) ConnectionManager.getConnection();
+		PreparedStatement ps = con.prepareStatement("SELECT * from usuarios WHERE usuario=? and password=?");
+		ps.setString(1, user);
+		ps.setString(2, pass);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			this.id = rs.getInt(1);
+			this.nombre = rs.getString(2);
+			this.apellidos = rs.getString(3);
+			this.edad = rs.getInt(4);
+			this.sexo = rs.getString(5);
+			this.ocupacion = rs.getString(6);
+			this.email = rs.getString(7);
+			this.usuario = rs.getString(8);
+			this.sobre = rs.getString(10);
+			System.out.println(id);
+			ps.close();
+			validate = true;
+		}
+		
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return validate; 
+		
 	}
 	
 	

@@ -8,20 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelos.Usuarios;
 
 /**
- * Servlet implementation class usuario
+ * Servlet implementation class UpdateUser
  */
-@WebServlet(name = "registrar", urlPatterns = { "/registrar" })
-public class usuario extends HttpServlet {
+@WebServlet("/UpdateUser")
+public class UpdateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public usuario() {
+    public UpdateUser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,9 +40,13 @@ public class usuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		try{
+			/*Clear session*/
+			HttpSession session=request.getSession();  
+	        session.setAttribute("usuario", null);
+	        
 			/* Recuperar los parametros del form */
+			int id = Integer.parseInt(request.getParameter("id"));
 			String nombre = request.getParameter("nombre");
 			String apellidos = request.getParameter("apellidos");
 			int edad = Integer.parseInt(request.getParameter("edad"));
@@ -52,12 +57,13 @@ public class usuario extends HttpServlet {
 			String password = request.getParameter("password");
 			String sobre = request.getParameter("sobre");
 			
-			Usuarios us = new Usuarios(0, nombre, apellidos, edad, sexo, ocupacion, email, usuario, password, sobre);
-			boolean res = us.saveUser();
+			Usuarios us = new Usuarios(id, nombre, apellidos, edad, sexo, ocupacion, email, usuario, password, sobre);
+			boolean res = us.updateUser();
 			
-			if(res) {
-				RequestDispatcher rd =  request.getRequestDispatcher("exitoso.jsp");
-				rd.forward(request, response);
+			if(res) {  
+		        session.setAttribute("usuario", us);  
+		        session.setAttribute("session", true); 
+		        response.sendRedirect("p-micuenta.jsp");
 			} else {
 				RequestDispatcher rd =  request.getRequestDispatcher("error.jsp");
 				rd.forward(request, response);
@@ -68,7 +74,6 @@ public class usuario extends HttpServlet {
 			RequestDispatcher rd =  request.getRequestDispatcher("error.jsp");
 			rd.forward(request, response);
 		}
-		
 		//doGet(request, response);
 	}
 
