@@ -76,49 +76,95 @@ Usuarios us = (Usuarios) hs.getAttribute("usuario");
 		<div class="container" style="padding-top: 60px;">
 			<% if(hs.getAttribute("session") != null){ %>
 			<div class="row">
-			<div class="col-lg-12">
-			</div>
-			<form method="post" action="UpdateUser">
-  <div class="row">
-    <div class="col">
-      <p>
-							<input type="hidden" value="${usuario.id}" name="id"> 
-							Nombre:&nbsp;&nbsp; <br> <input  class="form-control"  type="text" name="nombre" autofocus required
-								placeholder="Nombre" value="${usuario.nombre}" /> <br> Apellidos:&nbsp;&nbsp; <br><input  class="form-control"  type="text" name="apellidos" required
-								placeholder="Apellidos" value="${usuario.apellidos}" />
-						</p>
+				<form method="post" action="UpdateUser">
+				<div class="row">
+				<div class="col">
+				<h3>Crear Blog</h3>
+				</div>
+				</div>
+					<div class="row">
+					
+						<div class="col">
 						<p>
-							Ocupación:&nbsp;&nbsp;<br><input class="form-control" type="text" name="ocupacion" required placeholder="Ocupación" value="${usuario.ocupacion}" />
-							<br>Email:&nbsp;&nbsp;<br><input class="form-control" type="text" name="email" required placeholder="Email" value="${usuario.email}" />
+						Título:&nbsp;&nbsp; <br> 
+						<input  class="form-control"  type="text" name="nombre" autofocus required
+								placeholder="" value="" />
 						</p>
-    </div>
-    <div class="col">
-      <p>
-							Edad:&nbsp;&nbsp;<br><input  class="form-control"  type="number" name="edad" required placeholder="Edad" value="${usuario.edad}" /> 
-							<br>Género:&nbsp;&nbsp;<select  class="form-control"  name="sexo" required>
-							<option value="M">Masculino</option>
-							<option value="F">Femenino</option>
+						
+						</div>
+						<div class="col">
+						Autor:&nbsp;&nbsp; <br> 
+						<input  class="form-control"  type="text" name="autor" autofocus required
+								placeholder="" value="" />
+						</div>
+						<!-- 
+						<div class="col">
+						Tipo:&nbsp;&nbsp; <br> 
+						<select  class="form-control"  name="tipo" required>
+							<option value="M">Receta</option>
+							<option value="F">Comentario</option>
 							</select>
-
-						</p>
+						</div>
+						-->
+						<div class="col">
 						<p>
-							Usuario:&nbsp;&nbsp;<br><input class="form-control" type="text" name="usuario" autofocus required
-								placeholder="Usuario" value="${usuario.usuario}" /><br>Contraseña:&nbsp;&nbsp;<br><input class="form-control" type="password" name="password"
-								placeholder="" value="${usuario.password}" required />
+						Estado:&nbsp;&nbsp; <br> 
+						<select  class="form-control"  name="estado" required>
+							<option>Aguascalientes</option>
+<option>Baja California</option>
+<option>Baja California Sur</option>
+<option>Campeche</option>
+<option>Chihuahua</option>
+<option>Chiapas</option>
+<option>Coahuila</option>
+<option>Colima</option>
+<option>Durango</option>
+<option>Guanajuato</option>
+<option>Guerrero</option>
+<option>Hidalgo</option>
+<option>Jalisco</option>
+<option>México</option>
+<option>Michoacán</option>
+<option>Morelos</option>
+<option>Nayarit</option>
+<option>Nuevo León</option>
+<option>Oaxaca</option>
+<option>Puebla</option>
+<option>Querétaro</option>
+<option>Quintana Roo</option>
+<option>San Luis Potosí</option>
+<option>Sinaloa</option>
+<option>Sonora</option>
+<option>Tabasco</option>
+<option>Tamaulipas</option>
+<option>Tlaxcala</option>
+<option>Veracruz</option>
+<option>Yucatán</option>
+<option>Zacatecas</option>
+							</select>
 						</p>
-    </div>
-    </div>
-     <div class="row">
-    <div class="col">
-    <h5>Cuéntanos sobre ti:</h5>
-						<textarea class="form-control" style="" rows="4" name="sobre">${usuario.sobre}</textarea>
-						<p></p>
-						<p>
-							<button class="btn btn-primary" type="submit">Actualizar</button>
+						</div>
+					</div>
+					<div class="row">
+					<div class="col">
+					<p>
+					Contenido:&nbsp;&nbsp; <br> 
+					<textarea class="form-control" style="" rows="4" name="ingredientes"></textarea>
+					</p>
+					<p>
+					Imagen:&nbsp;&nbsp; <br> 
+					<input type="file" class="" style="" name="imagen">
+					</p>
+					<p>
+					Video:&nbsp;&nbsp; <br> 
+					<input type="file" class="" style="" name="video">
+					</p>
+					<p>
+							<button class="btn btn-primary" type="submit">Guardar</button>
 						</p>
-  </div>
-  </div>
-</form>
+					</div>
+					</div>
+				</form>
 			</div>
 			
 			<% } else { %>

@@ -52,14 +52,16 @@
 </style>
 
 </head>
-
+<% 
+HttpSession hs = request.getSession();
+%>
 <body id="page-top">
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
 		id="mainNav">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top">Bienvenid@</a>
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">Bienvenido</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -76,8 +78,13 @@
 						href="#portfolio">Blog</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#contact">Contacto</a></li>
+					<% if(hs.getAttribute("session") != null){ %>	
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="login.jsp">Login</a></li>
+						href="p-micuenta.jsp">Mi cuenta</a></li>
+						<% } else { %>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger"
+						href="login.jsp">Regístrate</a></li>
+						<% } %>
 				</ul>
 			</div>
 		</div>

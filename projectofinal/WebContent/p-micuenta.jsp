@@ -64,36 +64,7 @@ Usuarios us = (Usuarios) hs.getAttribute("usuario");
 String s = (String) us.getSexo();
 %>
 	<!-- Navigation -->
-	<nav
-		class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-scrolled"
-		id="mainNav"
-		style="webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); background-color: #fff;">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="./"
-				style="color: #f4623a;">Gucamoli.mx</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-			<% if(hs.getAttribute("session") != null){ %>
-				<ul class="navbar-nav ml-auto my-2 my-lg-0">
-				<li class="nav-item"><a  class="nav-link js-scroll-trigger"
-						href="p-micuenta.jsp">Bienvenid@ ${usuario.nombre} </a> </li>
-					<li class="nav-item"><a  class="nav-link js-scroll-trigger"
-						href="./recetas">Mis recetas</a> </li>
-					<li class="nav-item"><a  class="nav-link js-scroll-trigger"
-						href="./blogs">Mis blogs</a> </li>	
-					<li class="nav-item"><a  class="nav-link js-scroll-trigger"
-						href="./salir">Cerrar Sesión</a> </li>
-				</ul>
-				<% } %>
-			</div>
-		</div>
-	</nav>
-
+	<%@ include file="header.jsp" %>
 	<!-- About Section -->
 	<section class="page-section" id="about">
 	
@@ -118,6 +89,8 @@ String s = (String) us.getSexo();
 				<p>Email: ${usuario.email}<p>
 				<p>Sobre ti: ${usuario.sobre}<p>
 				<p><a href="p-update.jsp">Actualizar mis datos</a></p>
+				
+				
 				</div>
 			</div>
 			<% } else { %>
