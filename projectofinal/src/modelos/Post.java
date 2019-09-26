@@ -25,7 +25,7 @@ public class Post {
 	InputStream img;
 	String video = "";
 	int id_usuario = 0;
-	
+	String enc = "";
 	
 	
 	public Post() {
@@ -175,6 +175,18 @@ public class Post {
 	public void setId_usuario(int id_usuario) {
 		this.id_usuario = id_usuario;
 	}
+	
+	
+
+
+	public String getEnc() {
+		return enc;
+	}
+
+
+	public void setEnc(String enc) {
+		this.enc = enc;
+	}
 
 
 	/*Method save post */
@@ -319,6 +331,65 @@ public class Post {
 		}
 		
 		return encode;
+	}
+	
+	
+	public List<Post> todasRecetas() {
+		List<Post> list = new ArrayList<Post>();
+		try{
+			Connection con = null;
+			con = (Connection) ConnectionManager.getConnection();
+			PreparedStatement ps = con.prepareStatement("select id, nombre, autor, estado, comida from post where tipo=?");
+			ps.setString(1, "R");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				//Post b = new Post(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+				Post b = new Post();
+				b.setId(rs.getInt(1));
+				b.setNombre(rs.getString(2));
+				b.setAutor(rs.getString(3));
+				b.setEstado(rs.getString(4));
+				b.setComida(rs.getString(5));
+				b.setEnc(getImage(rs.getInt(1)));
+				list.add(b);
+			}
+			/* Close connection */
+			ps.close();
+			con.close();
+			/* Catch error connection or query is wrong */
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return list;
+	}
+	
+	public List<Post> todosBlogs() {
+		List<Post> list = new ArrayList<Post>();
+		try{
+			Connection con = null;
+			con = (Connection) ConnectionManager.getConnection();
+			PreparedStatement ps = con.prepareStatement("select id, nombre, autor, estado, comida from post where tipo=?");
+			ps.setString(1, "B");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				//Post b = new Post(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+				Post b = new Post();
+				b.setId(rs.getInt(1));
+				b.setNombre(rs.getString(2));
+				b.setAutor(rs.getString(3));
+				b.setEstado(rs.getString(4));
+				b.setComida(rs.getString(5));
+				b.setEnc(getImage(rs.getInt(1)));
+				list.add(b);
+			}
+			/* Close connection */
+			ps.close();
+			con.close();
+			/* Catch error connection or query is wrong */
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return list;
 	}
 	
 	

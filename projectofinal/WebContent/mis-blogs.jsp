@@ -84,6 +84,7 @@ input {
 							<th>Autor</th>
 							<th>Estado</th>
 							<th>Tipo</th>
+							<th></th>
 						</tr>
 						<%
 							// Iterating through subjectList
@@ -102,6 +103,7 @@ input {
 							<td><%=ps.getAutor()%></td>
 							<td><%=ps.getEstado()%></td>
 							<td><%=ps.getComida()%></td>
+							<td><a href="./ver?id=<%=ps.getId()%>">Ver receta</a></td>
 						</tr>
 						<%
 							}

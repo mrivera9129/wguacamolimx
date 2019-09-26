@@ -84,8 +84,7 @@ HttpSession hss = request.getSession();
 			<p>Autor: ${post.autor}</p>
 			<p>Estado: ${post.estado}</p>
 			<p>Tipo: ${post.comida}</p>
-			<p>Ingredientes: <br>${post.ingredientes}</p>
-			<p>Preparación: <br> ${post.contenido}</p>
+			<p>Descripción: <br> ${post.contenido}</p>
 			</div>
 			<div class="col-lg-6">
 			<% if(hs.getAttribute("vimg") != " "){ %>

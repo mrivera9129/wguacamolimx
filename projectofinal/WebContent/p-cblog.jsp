@@ -30,6 +30,9 @@
 
 <!-- Theme CSS - Includes Bootstrap -->
 <link href="css/creativem.css" rel="stylesheet">
+
+<link rel="stylesheet" href="js/tiny/style.css" />
+
 <style>
 .page-section {
 	padding: 3rem 0;
@@ -154,7 +157,7 @@ input, select {
 						<div class="col">
 							<p>
 								Contenido:&nbsp;&nbsp; <br>
-								<textarea class="form-control" style="" rows="4"
+								<textarea id="contenido" class="form-control" style="" 
 									name="contenido"></textarea>
 							</p>
 							<p>
@@ -162,11 +165,15 @@ input, select {
 									style="" name="imagen">
 							</p>
 							<p>
-								Video:&nbsp;&nbsp; <br> <input type="text" class=""
+								Video:&nbsp;&nbsp; <br> <input type="text" class="form-control"
 									style="" name="video">
 							</p>
+							<!-- 
 							<p>
-								<button class="btn btn-primary" type="submit">Guardar</button>
+							<textarea id="texto" name="texto" class="form-control"></textarea>
+							</p> -->
+							<p>
+								<button id="enviar" class="btn btn-primary" type="submit">Guardar</button>
 							</p>
 						</div>
 					</div>
@@ -206,6 +213,44 @@ input, select {
 
 	<!-- Custom scripts for this template -->
 	<script src="js/creativem.js"></script>
+	
+	<!-- HTML Editor  -->
+	<script type="text/javascript" src="js/tiny/tinyeditor.js"></script>
+	<script type="text/javascript">
+	var texto = new TINY.editor.edit('contenido', {
+		    id: 'contenido',
+			width : 1000,
+			//height : 250,
+			cssclass : 'te',
+			controlclass : 'tecontrol',
+			rowclass : 'teheader',
+			dividerclass : 'tedivider',
+			controls : [ 'bold', 'italic', 'underline', 'strikethrough', '|',
+					'subscript', 'superscript', '|', 'orderedlist',
+					'unorderedlist', '|', 'outdent', 'indent', '|',
+					'leftalign', 'centeralign', 'rightalign', 'blockjustify',
+					'|', 'unformat', '|', 'undo', 'redo', 'n', 'font', 'size',
+					'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'cut',
+					'copy', 'paste', 'print' ],
+			footer : true,
+			fonts : [ 'Verdana', 'Arial', 'Georgia', 'Trebuchet MS' ],
+			xhtml : true,
+			cssfile : 'js/tiny/style.css',
+			bodyid : 'editor',
+			footerclass : 'tefooter',
+			toggle : {
+				text : 'show source',
+				activetext : 'show wysiwyg',
+				cssclass : 'toggle'
+			},
+			resize : {
+				cssclass : 'resize'
+			}
+		});
+		$('#enviar').click(function() {
+			contenido.post();
+		});
+	</script>
 
 </body>
 

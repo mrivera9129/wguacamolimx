@@ -30,6 +30,9 @@
 
 <!-- Theme CSS - Includes Bootstrap -->
 <link href="css/creativem.css" rel="stylesheet">
+
+<link rel="stylesheet" href="js/tiny/style.css" />
+
 <style>
 .page-section {
 	padding: 3rem 0;
@@ -80,7 +83,8 @@ input, select {
 				if (hs.getAttribute("session") != null) {
 			%>
 			<div class="row">
-				<form method="post" action="saveReceta" enctype="multipart/form-data">
+				<form method="post" action="saveReceta"
+					enctype="multipart/form-data">
 					<div class="row">
 						<div class="col">
 							<h3>Crear Receta</h3>
@@ -90,11 +94,10 @@ input, select {
 
 						<div class="col">
 							<p>
-								Nombre:&nbsp;&nbsp; <br> <input class="form-control"
+								Título:&nbsp;&nbsp; <br> <input class="form-control"
 									type="text" name="nombre" autofocus required placeholder=""
-									value="" />
-									<input type="hidden" name="tipo" value="R">
-									<input type="hidden" name="id_usuario" value="<%=us.getId()%>">
+									value="" /> <input type="hidden" name="tipo" value="R">
+								<input type="hidden" name="id_usuario" value="<%=us.getId()%>">
 							</p>
 
 						</div>
@@ -111,15 +114,6 @@ input, select {
 								<option value="Postre">Postre</option>
 							</select>
 						</div>
-						<!--
-						<div class="col">
-						Tipo:&nbsp;&nbsp; <br> 
-						<select  class="form-control"  name="tipo" required>
-							<option value="p">Platillo</option>
-							<option value="b">Blog</option>
-							</select>
-						</div>
-						-->
 						<div class="col">
 							<p>
 								Estado:&nbsp;&nbsp; <br> <select class="form-control"
@@ -163,12 +157,12 @@ input, select {
 						<div class="col">
 							<p>
 								Ingredientes:&nbsp;&nbsp; <br>
-								<textarea class="form-control" style="" rows="4"
+								<textarea id="contenido2" class="form-control" style="" rows="4"
 									name="ingredientes"></textarea>
 							</p>
 							<p>
 								Preparación:&nbsp;&nbsp; <br>
-								<textarea class="form-control" style="" rows="4"
+								<textarea id="contenido" class="form-control" style="" 
 									name="contenido"></textarea>
 							</p>
 							<p>
@@ -176,11 +170,15 @@ input, select {
 									style="" name="imagen">
 							</p>
 							<p>
-								Video:&nbsp;&nbsp; <br> <input type="text" class=""
+								Video:&nbsp;&nbsp; <br> <input type="text" class="form-control"
 									style="" name="video">
 							</p>
+							<!-- 
 							<p>
-								<button class="btn btn-primary" type="submit">Guardar</button>
+							<textarea id="texto" name="texto" class="form-control"></textarea>
+							</p> -->
+							<p>
+								<button id="enviar" class="btn btn-primary" type="submit">Guardar</button>
 							</p>
 						</div>
 					</div>
@@ -220,6 +218,75 @@ input, select {
 
 	<!-- Custom scripts for this template -->
 	<script src="js/creativem.js"></script>
+	
+	<!-- HTML Editor  -->
+	<script type="text/javascript" src="js/tiny/tinyeditor.js"></script>
+	<script type="text/javascript">
+	var texto = new TINY.editor.edit('contenido', {
+		    id: 'contenido',
+			width : 1000,
+			//height : 250,
+			cssclass : 'te',
+			controlclass : 'tecontrol',
+			rowclass : 'teheader',
+			dividerclass : 'tedivider',
+			controls : [ 'bold', 'italic', 'underline', 'strikethrough', '|',
+					'subscript', 'superscript', '|', 'orderedlist',
+					'unorderedlist', '|', 'outdent', 'indent', '|',
+					'leftalign', 'centeralign', 'rightalign', 'blockjustify',
+					'|', 'unformat', '|', 'undo', 'redo', 'n', 'font', 'size',
+					'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'cut',
+					'copy', 'paste', 'print' ],
+			footer : true,
+			fonts : [ 'Verdana', 'Arial', 'Georgia', 'Trebuchet MS' ],
+			xhtml : true,
+			cssfile : 'js/tiny/style.css',
+			bodyid : 'editor',
+			footerclass : 'tefooter',
+			toggle : {
+				text : 'show source',
+				activetext : 'show wysiwyg',
+				cssclass : 'toggle'
+			},
+			resize : {
+				cssclass : 'resize'
+			}
+		});
+	var texto2 = new TINY.editor.edit('contenido2', {
+	    id: 'contenido2',
+		width : 1000,
+		//height : 250,
+		cssclass : 'te',
+		controlclass : 'tecontrol',
+		rowclass : 'teheader',
+		dividerclass : 'tedivider',
+		controls : [ 'bold', 'italic', 'underline', 'strikethrough', '|',
+				'subscript', 'superscript', '|', 'orderedlist',
+				'unorderedlist', '|', 'outdent', 'indent', '|',
+				'leftalign', 'centeralign', 'rightalign', 'blockjustify',
+				'|', 'unformat', '|', 'undo', 'redo', 'n', 'font', 'size',
+				'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'cut',
+				'copy', 'paste', 'print' ],
+		footer : true,
+		fonts : [ 'Verdana', 'Arial', 'Georgia', 'Trebuchet MS' ],
+		xhtml : true,
+		cssfile : 'js/tiny/style.css',
+		bodyid : 'editor',
+		footerclass : 'tefooter',
+		toggle : {
+			text : 'show source',
+			activetext : 'show wysiwyg',
+			cssclass : 'toggle'
+		},
+		resize : {
+			cssclass : 'resize'
+		}
+	});
+		$('#enviar').click(function() {
+			contenido.post();
+			contenido2.post();
+		});
+	</script>
 
 </body>
 

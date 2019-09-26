@@ -47,8 +47,14 @@ public class verPublicacion extends HttpServlet {
 		        session.setAttribute("post", ps);
 		        String img = ps.getImage(id);
 		        session.setAttribute("vimg", img);
-				RequestDispatcher rd = request.getRequestDispatcher("receta.jsp");
-				rd.forward(request, response);
+		        if(ps.getTipo() == "R"){
+		        	RequestDispatcher rd = request.getRequestDispatcher("receta.jsp");
+					rd.forward(request, response);
+		        } else {
+		        	RequestDispatcher rd = request.getRequestDispatcher("blog.jsp");
+					rd.forward(request, response);
+		        }
+				
 			} else {
 				System.out.println("Error");
 				RequestDispatcher rd = request.getRequestDispatcher("/error");
