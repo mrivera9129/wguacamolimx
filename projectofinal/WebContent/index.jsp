@@ -80,10 +80,10 @@ HttpSession hs = request.getSession();
 						href="#contact">Contacto</a></li>
 					<% if(hs.getAttribute("session") != null){ %>	
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="p-micuenta.jsp">Mi cuenta</a></li>
+						href="mi-cuenta">Mi cuenta</a></li>
 						<% } else { %>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="login.jsp">Regístrate</a></li>
+						href="login">Entrar/Regístrate</a></li>
 						<% } %>
 				</ul>
 			</div>

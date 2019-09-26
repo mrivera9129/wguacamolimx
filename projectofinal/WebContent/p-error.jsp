@@ -56,21 +56,7 @@ input{
 <body id="page-top">
 
 	<!-- Navigation -->
-	<nav
-		class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-scrolled"
-		id="mainNav"
-		style="webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); background-color: #fff;">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="./"
-				style="color: #f4623a;">Gucamoli.mx</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</div>
-	</nav>
+	<%@ include file="bienvenido.jsp" %>
 
 	<!-- About Section -->
 	<section class="page-section" id="about">
@@ -80,9 +66,16 @@ input{
 			<div class="row">
 				<div class="col-lg-4 col-sm-6"></div>
 				<div class="col-lg-4 col-sm-6" style="border: 2px solid #f46841; padding: 20px;">
+					<!--
 					<p class="text-center"> Error intente nuevamente. 
 					<br>
 				<a href="login.jsp" >Login </a>
+					</p>
+					-->
+					<p class="text-center">
+					Ocurrio un error intente nuevamente
+					<br><br>
+					<a href="login" >Iniciar sesión/Registrarse</a>
 					</p>
 				</div>
 				<div class="col-lg-4 col-sm-6"></div>

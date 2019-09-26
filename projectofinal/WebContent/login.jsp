@@ -46,15 +46,19 @@
 .img-fluid {
 	height: 305px;
 }
-input{
+
+input {
 	height: 40px;
 }
 
-a{
+a {
 	text-decoration: none !important;
 }
 
-body{
+body {
+	background: url('img/fondo-login.jpg');
+    background-size: auto;
+background-size: cover;
 }
 </style>
 
@@ -63,21 +67,7 @@ body{
 <body id="page-top">
 
 	<!-- Navigation -->
-	<nav
-		class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-scrolled"
-		id="mainNav"
-		style="webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); background-color: #fff;">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="./"
-				style="color: #f4623a;">Gucamoli.mx</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</div>
-	</nav>
+	<%@ include file="bienvenido.jsp" %>
 
 	<!-- About Section -->
 	<section class="page-section" id="about">
@@ -86,28 +76,35 @@ body{
 
 			<div class="row">
 				<div class="col-lg-4 col-sm-6"></div>
-				<div class="col-lg-4 col-sm-6" style="border: 2px solid #f46841; padding: 20px;">
-					<form method="post" action="session">
-						<h2 class="text-center mt-0">Login</h2>
+				<div class="col-lg-4 col-sm-6"
+					style="padding: 20px;">
+					<form method="post" action="login">
+						<h2 class="text-center mt-0" style="color: #fff;">Iniciar sesión</h2>
 						<hr class="divider my-4" style="">
 						<div class="text-center">
 							<p>
-								<input type="text" name="us" autofocus required placeholder="Usuario">
+								<input type="text" name="us" autofocus required
+									placeholder="Usuario">
 							</p>
 							<p>
-								<input type="password" name="ps" required placeholder="Contraseña">
+								<input type="password" name="ps" required
+									placeholder="Contraseña">
 							</p>
 							<p>
 								<button class="btn btn-secondary" type="submit">Entrar</button>
 							</p>
 						</div>
 					</form>
-					<p class="text-center">
-					<!--  
+					<div class="text-center">
+					<h5 style="color: #fff;">¿No tienes cuenta?</h5>
+					<p style="color: #fff;">
+						<!--  
 					<a href="#" >¿Olvido su password? </a> <br> 
 					-->
-					<a href="registro.jsp" >Crear cuenta </a>
+
+						Regístrate <a href="registro"> AQUÍ</a>
 					</p>
+					</div>
 				</div>
 				<div class="col-lg-4 col-sm-6"></div>
 			</div>

@@ -1,3 +1,12 @@
+<style>
+#mainNav .navbar-nav .nav-item .nav-link{
+	color: #6c757d !important;
+}
+</style>
+
+<% 
+HttpSession hs = request.getSession();
+%>
 <nav
 	class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-scrolled"
 	id="mainNav"
@@ -15,20 +24,20 @@
 			<% if(hs.getAttribute("session") != null){ %>
 			<ul class="navbar-nav ml-auto my-2 my-lg-0">
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
-					href="p-micuenta.jsp"> ${usuario.nombre} </a></li>
+					href="./mi-cuenta">Bienvenido/a ${usuario.nombre} </a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 					role="button" aria-haspopup="true" aria-expanded="false">Recetas</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="./recetas">Mis recetas</a> <a
-							class="dropdown-item" href="p-creceta.jsp">Crear receta</a>
+						<a class="dropdown-item" href="./mis-recetas">Mis recetas</a> <a
+							class="dropdown-item" href="./crear-receta">Crear receta</a>
 					</div>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
 					role="button" aria-haspopup="true" aria-expanded="false">Blogs</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="./blogs">Mis blogs</a> <a
-							class="dropdown-item" href="p-cblog.jsp">Crear blogs</a>
+						<a class="dropdown-item" href="./mis-blogs">Mis blogs</a> <a
+							class="dropdown-item" href="./crear-blog">Crear blogs</a>
 					</div></li>
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
 					href="./salir">Cerrar Sesión</a></li>

@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Guacamoli.mx - Usuarios</title>
+<title>Guacamoli.mx - Receta</title>
 <link rel="icon" type="image/png"
 	href="http://icons.iconarchive.com/icons/custom-icon-design/round-world-flags/16/Mexico-icon.png" />
 <!-- Font Awesome Icons -->
@@ -64,8 +64,8 @@ input, select {
 <body id="page-top">
 <%@page import="modelos.Usuarios"%>
 <% 
-HttpSession hss = request.getSession(); 
-Usuarios us = (Usuarios) hss.getAttribute("usuario");
+HttpSession hs = request.getSession(); 
+Usuarios us = (Usuarios) hs.getAttribute("usuario");
 %>
 	<!-- Navigation -->
 	<%@ include file="header.jsp" %>
@@ -75,52 +75,7 @@ Usuarios us = (Usuarios) hss.getAttribute("usuario");
 	
 		<div class="container" style="padding-top: 60px;">
 			<% if(hs.getAttribute("session") != null){ %>
-			<div class="row">
-			<div class="col-lg-12">
-			</div>
-			<form method="post" action="UpdateUser">
-  <div class="row">
-    <div class="col">
-      <p>
-							<input type="hidden" value="${usuario.id}" name="id"> 
-							Nombre:&nbsp;&nbsp; <br> <input  class="form-control"  type="text" name="nombre" autofocus required
-								placeholder="Nombre" value="${usuario.nombre}" /> <br> Apellidos:&nbsp;&nbsp; <br><input  class="form-control"  type="text" name="apellidos" required
-								placeholder="Apellidos" value="${usuario.apellidos}" />
-						</p>
-						<p>
-							Ocupación:&nbsp;&nbsp;<br><input class="form-control" type="text" name="ocupacion" required placeholder="Ocupación" value="${usuario.ocupacion}" />
-							<br>Email:&nbsp;&nbsp;<br><input class="form-control" type="text" name="email" required placeholder="Email" value="${usuario.email}" />
-						</p>
-    </div>
-    <div class="col">
-      <p>
-							Edad:&nbsp;&nbsp;<br><input  class="form-control"  type="number" name="edad" required placeholder="Edad" value="${usuario.edad}" /> 
-							<br>Género:&nbsp;&nbsp;<select  class="form-control"  name="sexo" required>
-							<option value="M">Masculino</option>
-							<option value="F">Femenino</option>
-							</select>
-
-						</p>
-						<p>
-							Usuario:&nbsp;&nbsp;<br><input class="form-control" type="text" name="usuario" autofocus required
-								placeholder="Usuario" value="${usuario.usuario}" /><br>Contraseña:&nbsp;&nbsp;<br><input class="form-control" type="password" name="password"
-								placeholder="" value="${usuario.password}" required />
-						</p>
-    </div>
-    </div>
-     <div class="row">
-    <div class="col">
-    <h5>Cuéntanos sobre ti:</h5>
-						<textarea class="form-control" style="" rows="4" name="sobre">${usuario.sobre}</textarea>
-						<p></p>
-						<p>
-							<button class="btn btn-primary" type="submit">Actualizar</button>
-						</p>
-  </div>
-  </div>
-</form>
-			</div>
-			
+				<h3>Receta</h3>
 			<% } else { %>
 			<div class="row">
 				<div class="col-lg-12 col-sm-6" style="text-align:center;">

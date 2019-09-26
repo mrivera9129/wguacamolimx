@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Guacamoli.mx - Login</title>
+<title>Guacamoli.mx - Registro</title>
 <link rel="icon" type="image/png"
 	href="http://icons.iconarchive.com/icons/custom-icon-design/round-world-flags/16/Mexico-icon.png" />
 <!-- Font Awesome Icons -->
@@ -46,6 +46,11 @@
 .img-fluid {
 	height: 305px;
 }
+body {
+	background: url('img/fondo-login.jpg');
+    background-size: auto;
+background-size: cover;
+}
 </style>
 <link href="css/style.css" rel="stylesheet">
 </head>
@@ -53,21 +58,7 @@
 <body id="page-top">
 
 	<!-- Navigation -->
-	<nav
-		class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-scrolled"
-		id="mainNav"
-		style="webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); background-color: #fff;">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="./"
-				style="color: #f4623a;">Gucamoli.mx</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</div>
-	</nav>
+	<%@ include file="bienvenido.jsp" %>
 
 	<!-- About Section -->
 	<section class="page-section" id="about"
@@ -76,10 +67,10 @@
 		<div class="container" style="padding-top: 40px;">
 
 			<div class="row">
-
+				<div class="col-lg-2"></div>
 				<div class="col-lg-8" style="padding: 20px;">
-					<form method="post" action="registrar">
-						<h2 class="" style="color: white;">Crear cuenta</h2>
+					<h2 class="" style="color: white; text-align:center;">Crear una cuenta</h2>
+					<form method="post" action="registro">
 						<p></p>
 						<p>
 							<input type="text" name="nombre" autofocus required
@@ -88,8 +79,7 @@
 						</p>
 						<p>
 							<input type="number" name="edad" required placeholder="Edad" /> 
-							<select name="sexo">
-							<option disabled selected>Género</option>
+							<select  title="Género" name="sexo">
 							<option value="M">Masculino</option>
 							<option value="F">Femenino</option>
 							</select>
@@ -105,8 +95,9 @@
 								placeholder="Contraseña" />
 						</p>
 						<h5 style="color: white;">Cuéntanos sobre ti:</h5>
-						<textarea style="" rows="4" name="sobre"></textarea>
-						<p>
+						<textarea style="" rows="4" name="sobre" required></textarea>
+						<p><p>
+						<p class="text-center">
 							<button class="btn btn-primary" type="submit">Registrarse</button>
 						</p>
 					</form>

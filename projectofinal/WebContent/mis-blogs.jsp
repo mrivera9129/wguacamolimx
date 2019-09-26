@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Guacamoli.mx - Mi cuenta</title>
+<title>Guacamoli.mx - Usuarios</title>
 <link rel="icon" type="image/png"
 	href="http://icons.iconarchive.com/icons/custom-icon-design/round-world-flags/16/Mexico-icon.png" />
 <!-- Font Awesome Icons -->
@@ -46,61 +46,71 @@
 .img-fluid {
 	height: 305px;
 }
-input{
+
+input {
 	height: 40px;
-}
-#mainNav .navbar-nav .nav-item .nav-link{
-	color: #6c757d !important;
 }
 </style>
 
 </head>
 
 <body id="page-top">
-<%@page import="modelos.Usuarios"%>
-<% 
-HttpSession hss = request.getSession(); 
-Usuarios us = (Usuarios) hss.getAttribute("usuario");
-String s = (String) us.getSexo();
-%>
+	<%@page import="java.util.ArrayList"%>
+	<%--Importing all the dependent classes--%>
+	<%@page import="modelos.Post"%>
+	<%@page import="java.util.Iterator"%>
+	<%
+		ArrayList<Post> listBlogs = (ArrayList) request.getAttribute("blogs");
+	%>
 	<!-- Navigation -->
-	<%@ include file="header.jsp" %>
+	<%@ include file="header.jsp"%>
 	<!-- About Section -->
 	<section class="page-section" id="about">
-	
+
 		<div class="container" style="padding-top: 100px;">
-			<% if(hs.getAttribute("session") != null){ %>
+
 			<div class="row">
-			<div class="col-lg-12">
-			<h4 style="color:#f4623a">Mi cuenta </h4>
-			</div>
-				<div class="col-lg-2 col-sm-4" style="padding-top: 20px;">
-				<% if(s.equals("F") ){%>
-				<img src="http://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/128/Office-Girl-icon.png">
-				<% } else { %>
-				<img src="http://icons.iconarchive.com/icons/icons-land/vista-people/128/Person-Male-Light-icon.png">
-				<% } %>
+				<div class="col-lg-12 " style="margin-bottom: 10px;">
+					<h3>Lista de Blogs</h3>
 				</div>
-				<div class="col-lg-4 col-sm-6">
-				<p>Nombre: ${usuario.nombre} ${usuario.apellidos}<p>
-				<p>Edad: ${usuario.edad}<p>
-				<p>Sexo: ${usuario.sexo}<p>
-				<p>Ocupación: ${usuario.ocupacion}<p>
-				<p>Email: ${usuario.email}<p>
-				<p>Sobre ti: ${usuario.sobre}<p>
-				<p><a href="p-update.jsp">Actualizar mis datos</a></p>
-				
-				
+				<!--
+				<div class="col-lg-4 col-sm-6"></div>
+				 -->
+				<div class="col-lg-12 col-sm-12 bd-example">
+					<table class="table table-striped">
+
+						<tr>
+							<th>Nombre</th>
+							<th>Autor</th>
+							<th>Estado</th>
+							<th>Tipo</th>
+						</tr>
+						<%
+							// Iterating through subjectList
+
+							if (request.getAttribute("blogs") != null) // Null check for the object
+							{
+								Iterator<Post> iterator = listBlogs.iterator(); // 
+
+								while (iterator.hasNext()) // 
+								{
+									Post ps = iterator.next(); //
+						%>
+						<tr>
+
+							<td><%=ps.getNombre()%></td>
+							<td><%=ps.getAutor()%></td>
+							<td><%=ps.getEstado()%></td>
+							<td><%=ps.getComida()%></td>
+						</tr>
+						<%
+							}
+							}
+						%>
+					</table>
 				</div>
+				<div class="col-lg-4 col-sm-6"></div>
 			</div>
-			<% } else { %>
-			<div class="row">
-				<div class="col-lg-12 col-sm-6" style="text-align:center;">
-				<h4>¡Necesitas registrarte para entrar aquí! </h4>	<br>
-				<a href="login.jsp" >Login/Registrarse </a>
-				</div>
-			</div>
-			<% } %>
 		</div>
 	</section>
 

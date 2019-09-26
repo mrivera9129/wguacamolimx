@@ -46,44 +46,73 @@
 .img-fluid {
 	height: 305px;
 }
-input{
+
+input {
 	height: 40px;
-}
-#mainNav .navbar-nav .nav-item .nav-link{
-	color: #6c757d !important;
 }
 </style>
 
 </head>
 
 <body id="page-top">
-<%@page import="modelos.Usuarios"%>
-<% 
-HttpSession hs = request.getSession(); 
-Usuarios us = (Usuarios) hs.getAttribute("usuario");
-String s = (String) us.getSexo();
-%>
+	<%@page import="java.util.ArrayList"%>
+	<%--Importing all the dependent classes--%>
+	<%@page import="modelos.Post"%>
+	<%@page import="java.util.Iterator"%>
+	<%
+		ArrayList<Post> listRecetas = (ArrayList) request.getAttribute("recetas");
+	%>
 	<!-- Navigation -->
-	<%@ include file="header.jsp" %>
-
+	<%@ include file="header.jsp"%>
 	<!-- About Section -->
 	<section class="page-section" id="about">
-	
+
 		<div class="container" style="padding-top: 100px;">
-			<% if(hs.getAttribute("session") != null){ %>
+
 			<div class="row">
-			<div class="col-lg-12">
-			<h4 style="color:#f4623a">Mis Blogs </h4>
-			</div>
-			</div>
-			<% } else { %>
-			<div class="row">
-				<div class="col-lg-12 col-sm-6" style="text-align:center;">
-				<h4>¡Necesitas registrarte para entrar aquí! </h4>	<br>
-				<a href="login.jsp" >Login/Registrarse </a>
+				<div class="col-lg-12 " style="margin-bottom: 10px;">
+					<h3>Lista de recetas</h3>
 				</div>
+				<!--
+				<div class="col-lg-4 col-sm-6"></div>
+				 -->
+				<div class="col-lg-12 col-sm-12 bd-example">
+					<table class="table table-striped">
+
+						<tr>
+							<th>Nombre</th>
+							<th>Autor</th>
+							<th>Estado</th>
+							<th>Tipo</th>
+							<th></th>
+						</tr>
+						<%
+							// Iterating through subjectList
+
+							if (request.getAttribute("recetas") != null) // Null check for the object
+							{
+								Iterator<Post> iterator = listRecetas.iterator(); // 
+
+								while (iterator.hasNext()) // 
+								{
+									Post ps = iterator.next(); //
+						%>
+						<tr>
+
+							<td><%=ps.getNombre()%></td>
+							<td><%=ps.getAutor()%></td>
+							<td><%=ps.getEstado()%></td>
+							<td><%=ps.getComida()%></td>
+							<td><a href="./ver?id=<%=ps.getId()%>">Ver receta</a></td>
+						</tr>
+						<%
+							}
+							}
+						%>
+					</table>
+				</div>
+				<div class="col-lg-4 col-sm-6"></div>
 			</div>
-			<% } %>
 		</div>
 	</section>
 

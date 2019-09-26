@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class blogs
+ * Servlet implementation class crearblog
  */
-@WebServlet("/blogs")
-public class blogs extends HttpServlet {
+@WebServlet("/crear-blog")
+public class crearblog extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public blogs() {
+    public crearblog() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,11 +30,24 @@ public class blogs extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//HttpSession session=request.getSession(); 
-		//session.setAttribute("session", null);
-		//session.removeAttribute("attribute name");
-		response.sendRedirect("p-blogs.jsp");
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		try {
+			// Verificar que exista una session
+			HttpSession hs = request.getSession();
+
+			if (hs.getAttribute("session") != null) {
+				RequestDispatcher rd = request.getRequestDispatcher("p-cblog.jsp");
+				rd.forward(request, response);
+			} else {
+				// System.out.println("Error");
+				// response.sendRedirect("./error");
+				RequestDispatcher rd = request.getRequestDispatcher("/error");
+				rd.forward(request, response);
+			}
+		} catch (Exception e) {
+			System.out.println("Error" + e.getMessage());
+		}
+		
 	}
 
 	/**

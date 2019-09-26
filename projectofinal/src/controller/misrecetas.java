@@ -1,0 +1,73 @@
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import modelos.Post;
+import modelos.Usuarios;
+
+/**
+ * Servlet implementation class misrecetas
+ */
+@WebServlet("/mis-recetas")
+public class misrecetas extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public misrecetas() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		try {
+			// Verificar que exista una session
+			HttpSession hs = request.getSession();
+			if (hs.getAttribute("session") != null) {
+				Usuarios us = (Usuarios) hs.getAttribute("usuario");
+				//System.out.println("Usuario: "+us.getId());
+				Post ps = new Post();
+				//Mostrar las recetas
+				request.setAttribute("recetas", ps.misRecetas(us.getId()));
+				RequestDispatcher rd = request.getRequestDispatcher("mis-recetas.jsp");
+				rd.forward(request, response);
+
+			} else {
+				System.out.println("Error" + hs.getAttribute("session"));
+				RequestDispatcher rd = request.getRequestDispatcher("/error");
+				rd.forward(request, response);
+			}
+		} catch (Exception e) {
+			System.out.println("Error");
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
