@@ -103,7 +103,7 @@ input {
 							<td><%=ps.getAutor()%></td>
 							<td><%=ps.getEstado()%></td>
 							<td><%=ps.getComida()%></td>
-							<td><a href="./ver?id=<%=ps.getId()%>">Ver receta</a></td>
+							<td><a href="./ver?id=<%=ps.getId()%>">Ver blog</a></td>
 						</tr>
 						<%
 							}

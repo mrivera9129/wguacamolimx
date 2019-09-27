@@ -2,7 +2,14 @@
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<%@page import="java.util.ArrayList"%>
+	<%--Importing all the dependent classes--%>
+	<%@page import="modelos.Post"%>
+	<%@page import="java.util.Iterator"%>
+	<%
+		ArrayList<Post> listRecetas = (ArrayList) request.getAttribute("trecetas");
+	
+	%>
 <head>
 
 <meta charset="utf-8">
@@ -52,104 +59,51 @@
 
 <body id="page-top">
 
+
 	<!-- Navigation -->
-	<nav
-		class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-scrolled"
-		id="mainNav"
-		style="webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); background-color: #fff;">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="./"
-				style="color: #f4623a;">Gucamoli.mx</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</div>
-	</nav>
+	<%@ include file="header.jsp" %>
 
 	<!-- About Section -->
 	<section class="page-section" id="about">
 
 		<div class="container" style="padding-top: 100px;">
-			<h1 class="text-center mt-0">Blogs</h1>
+			<h1 class="text-center mt-0">Recetas</h1>
 			<hr class="divider my-4" style="max-width: 100%;">
 			<div class="row">
-				<div class="col-lg-8" style="padding: 20px;">
-					<h3>Todos los blogs </h3>
-					
+				<div class="col-lg-12" style="padding: 20px;">
 					<div class="row">
-					
-					<div class="col-lg-6">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top"
-							src="http://www.mexiconewsnetwork.com/wp-content/uploads/2018/11/gastronomia-mexicana-1-1000x600.jpg"
-							alt=""></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="receta.jsp">Los mejores tips para preparar tamales</a>
-							</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Amet numquam aspernatur!</p>
-						</div>
-					</div>
-					</div>
-					<div class="col-lg-6">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top"
-							src="https://media.metrolatam.com/2017/09/13/screen-shot-20170913-at-11.36.54-am-600x400.jpg"
-							alt=""></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="receta.jsp">¿Como acompañar tus enchiladas?</a>
-							</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Amet numquam aspernatur!</p>
-						</div>
-					</div>
-					</div>
-					
-					</div>
+<%
+							// Iterating through subjectList
 
+							if (request.getAttribute("trecetas") != null) // Null check for the object
+							{
+								Iterator<Post> iterator = listRecetas.iterator(); // 
+
+								while (iterator.hasNext()) // 
+								{
+									Post ps = iterator.next(); //
+						%>
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card h-100">
+							<a href="#"><img style="height: 200px !important;" class="card-img-top"
+								src="data:image/jpeg;base64,<%=ps.getEnc()%>"
+								alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a title="ver publicación" href="./ver?id=<%=ps.getId()%>"><%=ps.getNombre()%></a>
+								</h4>
+								<h5>Origen:<%=ps.getEstado()%></h5>
+							</div>
+						</div>
+					</div>
 					
+						<%
+							}
+							}
+						%>
+					<!-- /.row -->
+
 				</div>
-				<div class="col-lg-4" style="padding: 20px;">
-					<h3><small class="text-muted"> ★ </small>Destacados</h3>
-					<div class="row">
-					
-					<div class="col-lg-12" style="margin-bottom: 10px;">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top"
-							src="https://tipsparatuviaje.com/wp-content/uploads/2018/09/enchiladas-comida-mexicana.jpg"
-							alt=""></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="receta.jsp">¿Tacos Rojos?</a>
-							</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Amet numquam aspernatur!</p>
-						</div>
-					</div>
-					</div>
-					<div class="col-lg-12">
-					<div class="card h-100">
-						<a href="#"><img class="card-img-top"
-							src="https://cdn.foodandwineespanol.com/2018/10/maarten-van-den-heuvel-400626-unsplash.jpg"
-							alt=""></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="receta.jsp">¿Que beneficios se obtiene de las ensaladas?</a>
-							</h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Amet numquam aspernatur!</p>
-						</div>
-					</div>
-					</div>
-					
-					</div>
-
-					
 				</div>
 			</div>
 		</div>

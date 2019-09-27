@@ -35,9 +35,10 @@ public class verPublicacion extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
+			System.out.println("Entro a ver");
 			// Verificar que exista una session
 			HttpSession hs = request.getSession();
-			if (hs.getAttribute("session") != null) {
+			//if (hs.getAttribute("session") != null) {
 				int id = Integer.parseInt(request.getParameter("id"));
 				// ver?id=52
 				Post ps = new Post();
@@ -47,19 +48,20 @@ public class verPublicacion extends HttpServlet {
 		        session.setAttribute("post", ps);
 		        String img = ps.getImage(id);
 		        session.setAttribute("vimg", img);
-		        if(ps.getTipo() == "R"){
+		        String t = (String) ps.getTipo();
+		        if(t.equals("R")){
 		        	RequestDispatcher rd = request.getRequestDispatcher("receta.jsp");
 					rd.forward(request, response);
 		        } else {
 		        	RequestDispatcher rd = request.getRequestDispatcher("blog.jsp");
 					rd.forward(request, response);
 		        }
-				
+			/*	
 			} else {
 				System.out.println("Error");
 				RequestDispatcher rd = request.getRequestDispatcher("/error");
 				rd.forward(request, response);
-			}
+			}*/
 		} catch (Exception e) {
 			System.out.println("Error");
 		}

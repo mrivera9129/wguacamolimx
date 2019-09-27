@@ -74,7 +74,7 @@ HttpSession hss = request.getSession();
 	<section class="page-section" id="about">
 	
 		<div class="container" style="padding-top: 60px;">
-			<% if(hs.getAttribute("session") != null){ %>
+			
 			<div class="row">
 			<div class="col-lg-12">
 			<h2>${post.nombre}</h2>
@@ -103,14 +103,7 @@ HttpSession hss = request.getSession();
 			</div>
 			</div>
 			
-			<% } else { %>
-			<div class="row">
-				<div class="col-lg-12 col-sm-6" style="text-align:center;">
-				<h4>¡Necesitas registrarte para entrar aquí! </h4>	<br>
-				<a href="login.jsp" >Login/Registrarse </a>
-				</div>
-			</div>
-			<% } %>
+			
 			
 		</div>
 	</section>

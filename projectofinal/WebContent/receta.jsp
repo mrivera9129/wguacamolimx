@@ -63,10 +63,6 @@ input, select {
 
 <body id="page-top">
 <%@page import="modelos.Post"%>
-<% 
-HttpSession hss = request.getSession(); 
-
-%>
 	<!-- Navigation -->
 	<%@ include file="header.jsp" %>
 
@@ -74,7 +70,6 @@ HttpSession hss = request.getSession();
 	<section class="page-section" id="about">
 	
 		<div class="container" style="padding-top: 60px;">
-			<% if(hs.getAttribute("session") != null){ %>
 			<div class="row">
 			<div class="col-lg-12">
 			<h2>${post.nombre}</h2>
@@ -95,23 +90,9 @@ HttpSession hss = request.getSession();
 			</p>
 			<% } %>
 			<p>Video</p>
-			<iframe width="400" height="300" 
-			src="${post.video}" 
-			frameborder="0" 
-			allow="accelerometer; autoplay; 
-			encrypted-media; gyroscope;
-			 picture-in-picture" allowfullscreen></iframe>
+			<iframe width="560" height="315" src="${post.video}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			</div>
-			
-			<% } else { %>
-			<div class="row">
-				<div class="col-lg-12 col-sm-6" style="text-align:center;">
-				<h4>¡Necesitas registrarte para entrar aquí! </h4>	<br>
-				<a href="login.jsp" >Login/Registrarse </a>
-				</div>
-			</div>
-			<% } %>
 			
 		</div>
 	</section>

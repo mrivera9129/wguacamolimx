@@ -12,7 +12,7 @@ HttpSession hs = request.getSession();
 	id="mainNav"
 	style="webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15); background-color: #fff;">
 	<div class="container">
-		<a class="navbar-brand js-scroll-trigger" href="./"
+		<a title="ir a página de inicio" class="navbar-brand js-scroll-trigger" href="./"
 			style="color: #f4623a;">Gucamoli.mx</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"

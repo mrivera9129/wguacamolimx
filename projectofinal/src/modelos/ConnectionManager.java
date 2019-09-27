@@ -17,7 +17,7 @@ public class ConnectionManager {
 	public static Connection getConnection() {
 		try {
 			/* url, name db and user */
-			String url = "jdbc:mysql://localhost:3306/guacamoli?user=root";
+			String url = "jdbc:mysql://localhost:3306/guacalomimx?user=root&useUnicode=true&characterEncoding=utf8";
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(url);
 		} catch (ClassNotFoundException ce) {

@@ -162,7 +162,7 @@ HttpSession hs = request.getSession();
 				<div class="col-lg-3 col-md-6 text-center">
 					<div class="mt-5">
 						<i class="fas fa-4x fa-heart text-primary mb-4"></i>
-						<h3 class="h4 mb-2">¡Unete!</h3>
+						<h3 class="h4 mb-2">¡Únete!</h3>
 						<p class="text-muted mb-0" style="text-align: center">
 							¿Te gustaría formar parte? <br> Déjanos tus datos de
 							contacto.
@@ -180,6 +180,8 @@ HttpSession hs = request.getSession();
 				<div class="col-lg-8 text-center">
 					<h2 class="text-white mt-0">Cocina Mexicana</h2>
 					<hr class="divider light my-4">
+					<p title="ver todas las recetas" style="color: #fff !important; cursor: pointer;"
+				onclick="location.href = './recetas';">Todas los recetas</p>
 				</div>
 			</div>
 
@@ -230,14 +232,14 @@ HttpSession hs = request.getSession();
 						%>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
-							<a href="#"><img style="heigth: 250px !important;" class="card-img-top"
+							<img style="height: 200px !important;" class="card-img-top"
 								src="data:image/jpeg;base64,<%=ps.getEnc()%>"
-								alt=""></a>
+								alt="">
 							<div class="card-body">
 								<h4 class="card-title">
-									<a href="receta.jsp"><%=ps.getNombre()%></a>
+									<a title="ver publicación" href="./ver?id=<%=ps.getId()%>"><%=ps.getNombre()%></a>
 								</h4>
-								<h5>Origen:<%=ps.getEstado()%></h5>
+								<h5>Origen: <%=ps.getEstado()%></h5>
 							</div>
 						</div>
 					</div>
@@ -259,8 +261,8 @@ HttpSession hs = request.getSession();
 		<div class="text-center" style="padding-top: 30px;">
 			<h1>Blog</h1>
 			<hr class="divider my-4">
-			<p style="color: #f4623a !important; cursor: pointer;"
-				onclick="location.href = 'blogs.jsp';">Todos los blogs</p>
+			<p title="ver todos los blogs" style="color: #f4623a !important; cursor: pointer;"
+				onclick="location.href = './blogs';">Todos los blogs</p>
 		</div>
 		<div class="container-fluid p-0">
 			<div class="row no-gutters">
@@ -275,16 +277,16 @@ HttpSession hs = request.getSession();
 								{
 									Post ps = iterator.next(); //
 						%>
-				<div class="col-lg-3 col-md-6 mb-4">
+				<div class="col-lg-3 col-md-6 mb-4" style="margin-left: 60px;">
 						<div class="card h-100">
-							<a href="#"><img style="heigth: 250px !important;" class="card-img-top"
+							<img style="height: 200px !important;" class="card-img-top"
 								src="data:image/jpeg;base64,<%=ps.getEnc()%>"
-								alt=""></a>
+								alt="">
 							<div class="card-body">
 								<h4 class="card-title">
-									<a href="receta.jsp"><%=ps.getNombre()%></a>
+									<p style="cursor:pointer; color: #d6370c;" onclick="location.href = './ver?id=<%=ps.getId()%>';"><%=ps.getNombre()%></p>
 								</h4>
-								<h5>Origen:<%=ps.getEstado()%></h5>
+								<h5>Origen: <%=ps.getEstado()%></h5>
 							</div>
 						</div>
 					</div>
@@ -308,23 +310,23 @@ HttpSession hs = request.getSession();
    -->
 
 	<!-- Contact Section -->
-	<section class="page-section" id="contact">
+	<section class="page-section bg-primary" id="contact">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-8 text-center">
-					<h2 class="mt-0">Contáctanos</h2>
+					<h2 class="mt-0" style="color:white;">Contáctanos</h2>
 					<hr class="divider my-4">
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-					<i class="fas fa-phone fa-3x mb-3 text-muted"></i>
-					<div>33 - 1296 3254</div>
+					<i style="color:white !important;" class="fas fa-phone fa-3x mb-3 text-muted"></i>
+					<div style="color:white; ">33 - 1296 3254</div>
 				</div>
 				<div class="col-lg-4 mr-auto text-center">
-					<i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+					<i style="color:white !important" class="fas fa-envelope fa-3x mb-3 text-muted"></i>
 					<!-- Make sure to change the email address in anchor text AND the link below! -->
-					<a class="d-block" href="#">contacto@guacamoli.mx</a>
+					<a class="d-block" href="#" style="color:white;">contacto@guacamoli.mx</a>
 				</div>
 			</div>
 		</div>

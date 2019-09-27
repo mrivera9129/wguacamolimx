@@ -76,9 +76,9 @@ String s = (String) us.getSexo();
 			</div>
 				<div class="col-lg-2 col-sm-4" style="padding-top: 20px;">
 				<% if(s.equals("F") ){%>
-				<img src="http://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/128/Office-Girl-icon.png">
+				<img src="img/girl.png">
 				<% } else { %>
-				<img src="http://icons.iconarchive.com/icons/icons-land/vista-people/128/Person-Male-Light-icon.png">
+				<img src="img/boy.png">
 				<% } %>
 				</div>
 				<div class="col-lg-4 col-sm-6">
